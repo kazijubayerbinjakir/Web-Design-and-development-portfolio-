@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kazi Jubayer Bin Jakir – Web Designer and Developer</title>
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&family=Manrope:wght@700;800&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Theme variables: the "Change colour" button changes these */
+  --bg:#0e1621; --ink:#e8eef5; --card:#162231; --a1:#5eead4; --a2:#7dd3fc; --a3:#a5b4fc; --on:#06121a; --r:10px;
+  --line:color-mix(in srgb,var(--ink) 16%,transparent);
+  --soft:color-mix(in srgb,var(--ink) 72%,transparent);
+  --display:"Manrope","Segoe UI",system-ui,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.7 var(--body);padding-bottom:6rem;transition:background .5s,color .5s}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--a1);outline-offset:3px;border-radius:6px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0}
+.logo{font:800 1.15rem var(--display);text-decoration:none}
+.logo-img{height:2.2rem;width:auto;display:block}
+nav{display:flex;gap:1.6rem;font-weight:500;font-size:.98rem}
+nav a{text-decoration:none;color:var(--soft)}
+nav a:hover{color:var(--ink)}
+
+.btn{display:inline-block;font:600 .98rem var(--body);padding:.7rem 1.35rem;border:1px solid transparent;border-radius:var(--r);background:var(--a1);color:var(--on);text-decoration:none;cursor:pointer;transition:transform .15s,filter .15s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+.btn.alt{background:transparent;color:var(--ink);border-color:var(--line)}
+.row{display:flex;gap:.8rem;flex-wrap:wrap}
+
+section{padding:3.5rem 0}
+h2{font-size:clamp(1.9rem,4.5vw,2.6rem);line-height:1.1;margin-bottom:2rem}
+h2::after{content:"";display:block;width:3rem;height:4px;border-radius:4px;background:var(--a1);margin-top:.7rem}
+
+/* Hidden stars: small sparkles */
+.star{background:none;border:0;color:var(--a1);font-size:1rem;line-height:1;padding:.3rem;cursor:pointer;vertical-align:middle;animation:twinkle 3.4s ease-in-out infinite}
+.star:hover{transform:scale(1.35)}
+.star.got{opacity:.35;animation:none;cursor:default;transform:none}
+@keyframes twinkle{50%{opacity:.45}}
+
+/* ===== HERO ===== */
+.hero{display:grid;grid-template-columns:1.35fr 1fr;gap:3.5rem;align-items:center;padding:3rem 0 4rem}
+.status{display:inline-flex;gap:.55rem;align-items:center;font-size:.92rem;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:.25rem .9rem;margin-bottom:1.4rem}
+.dot{width:.55rem;height:.55rem;border-radius:50%;background:#34d399}
+.role{color:var(--a1);font-weight:600;margin:0 0 .6rem}
+.hero h1{font-size:clamp(2.4rem,6.5vw,4.4rem);line-height:1.04;margin-bottom:1.2rem}
+.hero .lead{font-size:1.2rem;color:var(--soft);max-width:31rem;margin:0 0 2rem}
+.photo{aspect-ratio:4/5;max-width:20rem;width:100%;margin:0 auto;background:var(--card);color:var(--a1);border:1px solid var(--line);border-radius:calc(var(--r)*2);box-shadow:0 24px 60px rgba(0,0,0,.22);display:grid;place-items:center;font:800 4.5rem var(--display);overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:46rem){.hero{grid-template-columns:1fr;gap:2.5rem}.photo{max-width:15rem;margin:0}}
+
+/* ===== ABOUT ===== */
+.about p{max-width:40rem;margin:0 0 1rem;color:var(--soft)}
+.facts{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.4rem}
+.facts span{border:1px solid var(--line);border-radius:999px;padding:.3rem .95rem;font-size:.95rem;font-weight:500}
+
+/* ===== CARDS (skills + projects) ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.4rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:calc(var(--r)*1.4);padding:1.5rem;box-shadow:0 1px 2px rgba(0,0,0,.08),0 10px 28px rgba(0,0,0,.1);transition:transform .2s,background .5s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px)}
+.card .bar{width:2rem;height:4px;border-radius:4px;background:var(--a1);margin-bottom:1rem}
+.card:nth-child(2) .bar{background:var(--a2)}
+.card:nth-child(3) .bar{background:var(--a3)}
+.card h3{font-size:1.3rem;margin-bottom:.45rem}
+.card p{margin:0 0 1rem;color:var(--soft);flex:1}
+.card .links a{font-weight:600;color:var(--a1);margin-right:1.1rem;text-decoration:none}
+.card .links a:hover{text-decoration:underline}
+
+/* ===== CONTACT (always open) ===== */
+.contact{background:var(--a1);color:var(--on);border-radius:calc(var(--r)*2);padding:3.2rem 1.5rem;text-align:center;margin:1.5rem 0 3rem;transition:background .5s}
+.contact h2::after{background:var(--on);margin-left:auto;margin-right:auto;opacity:.5}
+.contact p{max-width:30rem;margin:0 auto 1.3rem;font-size:1.1rem}
+.contact .mail{display:inline-block;font:800 clamp(1.25rem,4.5vw,2rem) var(--display);word-break:break-word;text-underline-offset:6px}
+.contact .row{justify-content:center;margin-top:1.5rem}
+.contact .btn{background:var(--on);color:var(--a1)}
+.contact .star{color:var(--on)}
+footer{text-align:center;font-size:.9rem;color:var(--soft);padding-bottom:1rem}
+
+/* Floating dock */
+.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;gap:.5rem;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.35rem .4rem;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.dock .btn{padding:.5rem 1.1rem;font-size:.92rem;border-radius:999px}
+.dock .btn:hover{transform:none}
+#count{font-weight:600;font-size:.92rem;padding:0 .9rem 0 .4rem;white-space:nowrap}
+
+@media (max-width:30rem){.dock{max-width:calc(100% - 1rem)}.dock .btn{padding:.5rem .8rem;font-size:.85rem}#count{padding:0 .5rem;font-size:.85rem}}
+
+/* Contact popup */
+.contact-list{display:grid;gap:.7rem;margin:1.3rem 0 1.2rem}
+.opt{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.1rem;border:1px solid var(--line);border-radius:var(--r);text-decoration:none;font-weight:600;color:var(--ink);transition:border-color .15s,transform .15s}
+.opt:hover{border-color:var(--a1);transform:translateY(-2px)}
+.opt span{color:var(--a1)}
+
+/* Reward dialog */
+dialog{border:1px solid var(--line);border-radius:calc(var(--r)*2);background:var(--card);color:var(--ink);max-width:28rem;width:calc(100% - 2rem);padding:2.2rem 1.7rem;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+dialog h2{font-size:1.7rem;margin:0 0 .8rem}
+dialog h2::after{display:none}
+.explorer{display:inline-block;background:var(--a1);color:var(--on);border-radius:999px;padding:.25rem 1.1rem;font-weight:600;font-size:.9rem;margin-bottom:1.1rem}
+dialog p{margin:0 0 .9rem;color:var(--soft)}
+#compliment{color:var(--ink);font-weight:600}
+
+.conf{position:fixed;top:-1rem;width:.6rem;height:1rem;border-radius:2px;pointer-events:none;z-index:60;animation:fall 2s ease-in forwards}
+@keyframes fall{to{transform:translateY(115vh) rotate(600deg);opacity:.3}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}body,.contact,.card,.btn{transition:none}.star{animation:none}.conf{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <a class="logo" href="#top"><img src="logo.png" alt="Jubayer logo" class="logo-img"></a>
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact" data-contact>Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ========== SECTION 1: HERO (name and intro on the left, photo on the right) ========== -->
+    <div class="hero">
+      <div>
+        <div class="status"><span class="dot" aria-hidden="true"></span> Open to work <span class="spot"></span></div>
+        <p class="role">Web Designer and Developer <span class="spot"></span></p>
+        <h1>Kazi Jubayer Bin Jakir</h1>
+        <p class="lead">I build clean, fast, and interactive web pages with HTML, CSS, and JavaScript, and I enjoy adding small details that make them memorable.</p>
+        <div class="row">
+          <a class="btn" href="#projects">View my work</a>
+        </div>
+      </div>
+      <!-- PHOTO: keep your photo file named photo.jpg in the same folder as this file -->
+      <div class="photo" id="photo"><img src="photo.jpg" alt="Kazi Jubayer Bin Jakir"></div>
+    </div>
+
+    <!-- ========== SECTION 2: ABOUT (edit your bio here) ========== -->
+    <section id="about" class="about">
+      <h2>About me <span class="spot"></span></h2>
+      <p>I’m a front-end developer who learns by trying new things. If something looks interesting, I build it, break it, and figure out how it works. That curiosity is how I taught myself HTML, CSS, and JavaScript.</p>
+      <p>I like pages that feel alive, with small surprises that reward people who look closely. <span class="spot"></span> I’m now looking for my first developer role, where I can keep growing and ship real products with a great team.</p>
+      <div class="facts" aria-label="Quick facts">
+        <span>Web design and development</span>
+        <span>Self-driven learner</span>
+        <span>Curious and independent</span>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 3: SKILLS (add more by copying one card) ========== -->
+    <section id="skills">
+      <h2>Skills <span class="spot"></span></h2>
+      <div class="grid">
+        <article class="card"><div class="bar"></div><h3>HTML</h3><p>Clean, semantic page structure that works well for everyone.</p></article>
+        <article class="card"><div class="bar"></div><h3>CSS</h3><p>Responsive layouts, color, and animation that make a page feel polished. <span class="spot"></span></p></article>
+        <article class="card"><div class="bar"></div><h3>JavaScript</h3><p>Interactions and small features that make pages enjoyable to use.</p></article>
+        <!-- ADD NEW SKILL: copy one <article class="card"> line above and change the title and text -->
+      </div>
+    </section>
+
+    <!-- ========== SECTION 4: PROJECTS (add your projects here) ========== -->
+    <section id="projects">
+      <h2>Projects <span class="spot"></span></h2>
+      <div class="grid">
+        <!-- PROJECT 1: edit the title, text and the two links -->
+        <article class="card">
+          <div class="bar"></div>
+          <h3>Project one <span class="spot"></span></h3>
+          <p>Add a short line about what this project does and what you used to build it.</p>
+          <div class="links"><a href="#">Live demo</a><a href="#">Code</a></div>
+        </article>
+        <!-- PROJECT 2 -->
+        <article class="card">
+          <div class="bar"></div>
+          <h3>Project two <span class="spot"></span></h3>
+          <p>Add a short line about what this project does and what you used to build it.</p>
+          <div class="links"><a href="#">Live demo</a><a href="#">Code</a></div>
+        </article>
+        <!-- PROJECT 3 -->
+        <article class="card">
+          <div class="bar"></div>
+          <h3>Project three <span class="spot"></span></h3>
+          <p>Add a short line about what this project does and what you used to build it.</p>
+          <div class="links"><a href="#">Live demo</a><a href="#">Code</a></div>
+        </article>
+        <!-- ADD NEW PROJECT: copy one <article class="card"> block above and paste it here -->
+      </div>
+    </section>
+
+    <!-- ========== SECTION 5: CONTACT (always open; add your email and links) ========== -->
+    <section id="contact" class="contact">
+      <h2>Let’s talk <span class="spot"></span></h2>
+      <p>I’d love to hear about your team and the role. Send me a message and I’ll reply as soon as I can.</p>
+      <!-- EMAIL: replace the address in BOTH places below -->
+      <a class="mail" href="https://mail.google.com/mail/?view=cm&fs=1&to=kazijubayer.co@gmail.com" target="_blank" rel="noopener">kazijubayer.co@gmail.com</a>
+      <div class="row">
+        <!-- GITHUB: replace the # with your GitHub link -->
+        <a class="btn" href="https://github.com/kazijubayerbinjakir" target="_blank" rel="noopener">GitHub</a>
+        <!-- LINKEDIN: replace the # with your LinkedIn link -->
+        <a class="btn" href="#">LinkedIn</a>
+      </div>
+    </section>
+
+  </main>
+  <footer>© 2026 Kazi Jubayer Bin Jakir <span class="spot"></span></footer>
+</div>
+
+<div class="dock">
+  <button class="btn alt" id="surprise" type="button">Change colour</button>
+  <button class="btn" id="play" type="button">Play game</button>
+  <span id="count" hidden></span>
+</div>
+<div class="vh" aria-live="polite" id="live"></div>
+
+<!-- CONTACT POPUP: replace the links below with your own -->
+<dialog id="contactDlg" aria-labelledby="ct">
+  <h2 id="ct">Get in touch</h2>
+  <p>Choose the way you like to reach me.</p>
+  <div class="contact-list">
+    <!-- GITHUB: replace your-username -->
+    <a class="opt" href="https://github.com/kazijubayerbinjakir" target="_blank" rel="noopener">GitHub <span>&rarr;</span></a>
+    <!-- LINKEDIN: replace your-profile -->
+    <a class="opt" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn <span>&rarr;</span></a>
+    <!-- EMAIL: replace the address -->
+    <a class="opt" href="https://mail.google.com/mail/?view=cm&fs=1&to=kazijubayer.co@gmail.com" target="_blank" rel="noopener">Email <span>&rarr;</span></a>
+    <!-- WHATSAPP: use your number with country code, no + or spaces. Example: 8801XXXXXXXXX -->
+    <a class="opt" href="https://wa.me/8801842779208" target="_blank" rel="noopener">WhatsApp <span>&rarr;</span></a>
+  </div>
+  <button class="btn alt" type="button" id="closeContact">Close</button>
+</dialog>
+
+<dialog id="reward" aria-labelledby="rt">
+  <div class="explorer">Secret Explorer</div>
+  <h2 id="rt">You found all 5 secrets</h2>
+  <p id="time" style="font-weight:600;color:var(--ink)"></p>
+  <p>Thanks for exploring my page. Your curiosity is awesome.</p>
+  <p id="compliment"></p>
+  <p>Thanks for spending time on my page. If you’d like to work together, my contact details are right below. I’d love to hear from you!</p>
+  <div class="row" style="justify-content:center">
+    <a class="btn" href="#contact" id="toContact">Go to contact</a>
+    <button class="btn alt" type="button" id="again">Play again</button>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  var root=document.documentElement, live=document.getElementById('live');
+  var fonts=[
+    '"Manrope","Segoe UI",system-ui,sans-serif',
+    '"Fraunces",Georgia,"Times New Roman",serif',
+    '"Sora","Segoe UI",system-ui,sans-serif'
+  ];
+  // name, bg, ink, card, accent1, accent2, accent3, text-on-accent, radius, font
+  var moods=[
+    ['Midnight','#0e1621','#e8eef5','#162231','#5eead4','#7dd3fc','#a5b4fc','#06121a','10px',0],
+    ['Daylight','#f5f7fa','#111827','#ffffff','#2563eb','#0ea5e9','#6366f1','#ffffff','10px',0],
+    ['Forest','#0f1f1a','#e6f2ec','#16302a','#86efac','#fcd34d','#5eead4','#06150f','14px',1],
+    ['Slate','#eceff3','#1e293b','#ffffff','#334155','#f59e0b','#64748b','#ffffff','6px',2],
+    ['Plum','#1a1024','#f0e8f7','#261836','#e9b8ff','#fda4af','#c4b5fd','#1a1024','12px',1],
+    ['Ocean','#e8f1f8','#0b2540','#ffffff','#0b5cad','#0891b2','#7c3aed','#ffffff','14px',0]
+  ];
+  var cur=0;
+  function apply(i){
+    var m=moods[i], s=root.style;
+    s.setProperty('--bg',m[1]);s.setProperty('--ink',m[2]);s.setProperty('--card',m[3]);
+    s.setProperty('--a1',m[4]);s.setProperty('--a2',m[5]);s.setProperty('--a3',m[6]);
+    s.setProperty('--on',m[7]);s.setProperty('--r',m[8]);s.setProperty('--display',fonts[m[9]]);
+    cur=i; live.textContent='Theme: '+m[0];
+  }
+  function surprise(){
+    var n; do{n=Math.floor(Math.random()*moods.length)}while(n===cur);
+    apply(n);
+  }
+  document.getElementById('surprise').addEventListener('click',surprise);
+
+  function confetti(){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var cols=['var(--a1)','var(--a2)','var(--a3)'];
+    for(var i=0;i<40;i++){
+      var s=document.createElement('span');
+      s.className='conf'; s.style.background=cols[i%3];
+      s.style.left=Math.random()*100+'vw';
+      s.style.animationDelay=(Math.random()*.6)+'s';
+      document.body.appendChild(s);
+      setTimeout(function(el){el.remove()},2800,s);
+    }
+  }
+
+  var spots=Array.prototype.slice.call(document.querySelectorAll('.spot')), found=0, total=5, t0=0, playing=false;
+  var countEl=document.getElementById('count'), dlg=document.getElementById('reward'), playBtn=document.getElementById('play');
+  var compliments=[
+    'You have a great eye for detail!',
+    'Curious minds build the best things.',
+    'You just made my day. Thanks for visiting!',
+    'Explorers like you are rare. Nice work!'
+  ];
+  // Game: 5 stars are placed in random spots every time you press Play
+  function startGame(){
+    spots.forEach(function(sp){sp.textContent=''});
+    found=0; playing=true; t0=Date.now();
+    spots.slice().sort(function(){return Math.random()-.5}).slice(0,total).forEach(function(sp){
+      var b=document.createElement('button');
+      b.className='star'; b.type='button'; b.textContent='✦';
+      b.setAttribute('aria-label','Hidden star. Click to collect it.');
+      b.addEventListener('click',function(){collect(b)});
+      sp.appendChild(b);
+    });
+    countEl.hidden=false; countEl.textContent='✦ 0/'+total+' found';
+    playBtn.textContent='Restart'; live.textContent='Game started. Find 5 hidden stars.';
+    window.scrollTo(0,0); surprise();
+  }
+  function collect(b){
+    if(!playing||b.classList.contains('got')) return;
+    b.classList.add('got'); b.textContent='✓'; b.setAttribute('aria-label','Star collected');
+    found++; surprise();
+    if(found<total){countEl.textContent='✦ '+found+'/'+total+' found';return}
+    playing=false; countEl.textContent='All found'; playBtn.textContent='Play again';
+    document.getElementById('time').textContent='You found all 5 stars in '+Math.round((Date.now()-t0)/1000)+' seconds.';
+    document.getElementById('compliment').textContent=compliments[Math.floor(Math.random()*compliments.length)];
+    confetti();
+    setTimeout(function(){ if(dlg.showModal){dlg.showModal()}else{dlg.setAttribute('open','')} },700);
+  }
+  playBtn.addEventListener('click',startGame);
+  document.getElementById('again').addEventListener('click',function(){dlg.close();startGame()});
+  document.getElementById('toContact').addEventListener('click',function(){dlg.close()});
+  // Contact popup
+  var cdlg=document.getElementById('contactDlg');
+  document.querySelectorAll('[data-contact]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(cdlg.showModal){e.preventDefault();cdlg.showModal()}
+    });
+  });
+  document.getElementById('closeContact').addEventListener('click',function(){cdlg.close()});
+  cdlg.addEventListener('click',function(e){if(e.target===cdlg)cdlg.close()});
+  apply(0);
+})();
+</script>
+</body>
+</html>
